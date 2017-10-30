@@ -53,6 +53,18 @@ Process calls `A[x]` where `A` is not defined, will be treated as if the definit
 
 Another important restriction: the free names of the body of a definition **have to be bound by the definition's head!** This means that the definition `A[x] := x(y).(z<y> | A[y])` is not valid because `z` occurs free in the body but is not in the argument list. To fix the definition you have to include it as in `A[x,z] := x(y).(z<y> | A[y,z])`.
 
+## Examples
+
+You can find an example suite of &pi;-calculus programs at
+http://gist.github.com/bordaigorl/6e54093b297c0f9df01d0c82f65b89f6
+
+Any Gist can be loaded in Stargazer by using the `gist` parameter. For example, to try the above Gist you can go to
+
+> http://stargazer.emanueledosualdo.com?gist=6e54093b297c0f9df01d0c82f65b89f6
+
+You can create your own Gist and open it in the same way.
+A Gist can contain any number of programs (with extension `.pi`), each accompanied by an optional JSON configuration file with the same name but extension `.json`.
+
 
 [wikipedia]: http://en.wikipedia.org/wiki/Pi-calculus
 [license]: http://creativecommons.org/licenses/by-sa/4.0/
