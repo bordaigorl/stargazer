@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        * {
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        html {
+            color: #888;
+            display: table;
+            font-family: sans-serif;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+        a {
+          color: #077BCB; text-decoration: none; }
+        a:hover {
+          color: #1EAEDB; border-bottom: 1pt dotted; }
+
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 2em auto;
+        }
+
+        h1 {
+            color: #555;
+            font-size: 2em;
+            font-weight: 400;
+            padding: 0px 2em;
+        }
+
+        p {
+            margin: 1em auto;
+            max-width: 420px;
+        }
+
+        @media only screen and (max-width: 450px) {
+
+            body, p {
+                width: 85%;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+        }
+
+        svg.logo {
+            position:relative;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <h1>Ooops...Page Not Found!</h1>
+    <p>Sorry, but the page you were trying to view does not exist.
+    Try going back to <a href="index.html">Stargazer</a> or submit an <a href="https://github.com/bordaigorl/stargazer/issues">issue on GitHub</a>.</p>
+    <p style="width: 150px;">
+        <svg class="logo" height="320" width="184" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewbox="-30 0 260 400" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <circle cy="1120" cx="100" r="130" transform="scale(1,.3)" fill="#eee"></circle>
+        <g stroke="#999" stroke-width="2"> <line y2="117.28" x2="72.081" y1="90.295" x1="115.04"/> <line y2="117.28" x2="72.081" y1="142.8" x1="121.65"/> <line y2="153.39" x2="171.74" y1="142.8" x1="121.65"/> <line y2="117.28" x2="72.081" y1="57.893" x1="75.387"/> <line y2="5.6" x2="79.838" y1="57.893" x1="75.387"/> <line y2="117.28" x2="72.081" y1="85.156" x1="31.827"/> <line y2="117.28" x2="72.081" y1="137.49" x1="20.961"/> <line y2="182.57" x2="5.6" y1="137.49" x1="20.961"/> <line y2="117.28" x2="72.081" y1="168.14" x1="52.729"/> <line y2="182.57" x2="5.6" y1="168.14" x1="52.729"/> </g>
+        <rect transform="scale(-1,1)" height="12" width="18" y="136.8" x="-130.65" fill="#ff7f0e"></rect> <rect transform="scale(-1,1)" height="12" width="18" y="51.893" x="-84.387" fill="#ff7f0e"></rect> <rect transform="scale(-1,1)" height="12" width="18" y="84.295" x="-124.04" fill="#1f77b4"></rect> <rect transform="scale(-1,1)" height="12" width="18" y="79.156" x="-40.827" fill="#aec7e8"></rect> <rect transform="scale(-1,1)" height="12" width="18" y="131.49" x="-29.961" fill="#ffbb78"></rect> <rect transform="scale(-1,1)" height="12" width="18" y="162.14" x="-61.729" fill="#2ca02c"></rect>
+        <g stroke="#fff" stroke-width="1.2px" fill="#5b7a8c"> <circle cy="117.28" cx="72.081" r="5"></circle> <circle cy="153.39" cx="171.74" r="5"></circle> <circle cy="5.6" cx="79.838" r="5"></circle> <circle cy="182.57" cx="5.6" r="5"></circle> </g>
+        </svg>
+    </p>
+</div>
+
+    <script src="lib/jquery.js"></script>
+    <script type="text/javascript">
+        $(function() {
+
+            // Animation
+            var r = $("svg.logo rect");
+            var accell = .003;
+            r.each(function(index, el) {
+                var dT = 20;
+                var t0 = 500 + Math.random() * 500;
+                var time = 0;
+                var maxY = 310 + (Math.random() * 25);
+                var $el = $(el);
+                setTimeout(function () {
+                    var timer = setInterval(function () {
+                        var delta = accell * dT * ( dT + time );
+                        $el.attr("y", function(i,y){
+                            return parseFloat(y)+delta;})
+                        time += dT;
+                        if($el.attr("y")>maxY) clearInterval(timer);
+                    }, dT);
+                }, t0)
+
+            });
+            var c = $("svg.logo circle");
+            c.each(function(index, el) {
+                var dT = 20;
+                var t0 = 1200 + Math.random() * 500;
+                var time = 0;
+                var maxY = 310 + (Math.random() * 25);
+                var $el = $(el);
+                setTimeout(function () {
+                    var timer = setInterval(function () {
+                        var delta = accell * dT * ( dT + time );
+                        $el.attr("cy", function(i,y){
+                            return parseFloat(y)+delta;})
+                        time += dT;
+                        if($el.attr("cy")>maxY) clearInterval(timer);
+                    }, dT);
+                }, t0)
+
+            });
+        });
+    </script>
+</body>
+</html>
